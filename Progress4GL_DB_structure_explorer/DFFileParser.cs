@@ -169,10 +169,10 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 		public DFFileParser(string fileName)
 		{
 			if (fileName == null)
-				throw new ArgumentException("Non-null .df file name is required for DFFileParser");
+				throw new ArgumentNullException("Non-null .df file name is required for DFFileParser");
 
 			if (! File.Exists(fileName))
-				throw new IOException(string.Format("The {0} file does not exist"));
+				throw new IOException(string.Format("The {0} file does not exist", fileName));
 
 			try
 			{

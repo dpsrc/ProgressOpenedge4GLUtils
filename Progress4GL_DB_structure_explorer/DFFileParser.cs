@@ -11,23 +11,18 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 	{
 		private static readonly string _signatureDescription = "DESCRIPTION \"";
 		private static readonly int _signatureDescriptionLen = _signatureDescription.Length;
+        private string _fieldDescription = "";
 
-		public string FieldName = "";
-		public string FieldDescription = "";
+        public string FieldDescription { get => _fieldDescription; }
 
-		/// <summary>
-		/// Constructor.
-		/// </summary>
-		/// <param name="fieldName"></param>
-		/// <param name="fieldDescription"></param>
-		/// <exception cref="ArgumentException">if fieldName is null.</exception>
-		public FieldInfo(string fieldName, string fieldDescription)
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="fieldDescription"></param>
+        /// <exception cref="ArgumentException">if fieldName is null.</exception>
+        public FieldInfo(string fieldDescription)
 		{
-			if (fieldName == null)
-				throw new ArgumentException("Non-null fieldName is required for the DatabaseInfo");
-
-			FieldName = fieldName;
-			FieldDescription = fieldDescription;
+			_fieldDescription = fieldDescription ?? "";
 		}
 
 		/// <summary>
@@ -54,37 +49,30 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 				return "";
 			}
 		}
-	}
+    }
 
 	/// <summary>
 	/// Encapsulates the table information
 	/// </summary>
 	public class TableInfo
 	{
-		public string TableName = "";
+        private string _tableDescription = "";
 
-		public string TableDescription = "";
+        // (string fieldName, FieldInfo fieldInfo)
+        public IDictionary Fields = new SortedList();
 
-		// (string fieldName, FieldInfo fieldInfo)
-		public IDictionary Fields = new SortedList();
+        public string TableDescription { get => _tableDescription; }
 
-		/// <summary>
-		/// Constructor.
-		/// </summary>
-		/// <param name="tableName">Table name.</param>
-		/// <param name="description">Table description.</param>
-		/// <param name="fields">Table fields.</param>
-		/// <exception cref="ArgumentException">if tableName or fields is null.</exception>
-		public TableInfo(string tableName, string description, IDictionary fields)
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="description">Table description.</param>
+        /// <param name="fields">Table fields.</param>
+        /// <exception cref="ArgumentException">if tableName or fields is null.</exception>
+        public TableInfo(string description, IDictionary fields)
 		{
-			if ((fields == null) || (tableName == null))
-				throw new ArgumentException("Non-null tableName and fields are required for the DatabaseInfo");
-
-			TableName = tableName;
-
-			TableDescription = (description == null) ? "" : description;
-
-			Fields = fields;
+            Fields = fields ?? throw new ArgumentNullException("Non-null fields are required for the DatabaseInfo");
+            _tableDescription = description ?? "";
 		}
 
 		/// <summary>
@@ -198,8 +186,7 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 
 							string tableDescription = "";
 
-							while ((line != null) && (! line.StartsWith(_signatureAddField))
-								&& (! line.StartsWith(_signatureAddTable)))
+							while ((line != null) && (! line.StartsWith(_signatureAddField)) && (! line.StartsWith(_signatureAddTable)))
 							{
 								if (line.Trim().Length > 0)
 									tableDescription += line + "\n";
@@ -209,7 +196,7 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 
 							IDictionary fields = ParseFields(sr, line, ref line, ref tableDescription);
 
-							TableInfo tableInfo = new TableInfo(tableName, tableDescription, fields);
+							TableInfo tableInfo = new TableInfo(tableDescription, fields);
 
 							tables.Add(tableName, tableInfo);
 						}
@@ -291,7 +278,7 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 					}
 				}
 
-				fields.Add(fieldName, new FieldInfo(fieldName, fieldDescription));
+				fields.Add(fieldName, new FieldInfo(fieldDescription));
 			}
 			while ((line != null) && (! line.StartsWith(_signatureAddTable)));
 

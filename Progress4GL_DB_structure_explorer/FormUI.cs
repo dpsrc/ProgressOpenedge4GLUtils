@@ -22,11 +22,8 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 		private MenuItem menuItemFile;
 		private MenuItem Open;
 		private OpenFileDialog openFileDialogDFFile;
-		/// <summary>
-		/// Required designer variable.
-		/// </summary>
-		private Container components = null;
-		private MenuItem menuItemAbout;
+        private IContainer components;
+        private MenuItem menuItemAbout;
 
 		private DatabaseInfo _dbInfo = null;
 		private MainMenu mainMenu;
@@ -112,310 +109,313 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.splitterLeftRight = new System.Windows.Forms.Splitter();
-			this.panelRight = new System.Windows.Forms.Panel();
-			this.panelRightTop = new System.Windows.Forms.Panel();
-			this.dataGridFields = new System.Windows.Forms.DataGrid();
-			this.dataTableFields = new System.Data.DataTable();
-			this.dataColumnFieldName = new System.Data.DataColumn();
-			this.dataColumnShortDescription = new System.Data.DataColumn();
-			this.splitterRightTop = new System.Windows.Forms.Splitter();
-			this.labelFields = new System.Windows.Forms.Label();
-			this.splitterRights = new System.Windows.Forms.Splitter();
-			this.textBoxFieldDescription = new System.Windows.Forms.TextBox();
-			this.panelLeft = new System.Windows.Forms.Panel();
-			this.panelLeftTop = new System.Windows.Forms.Panel();
-			this.listBoxTables = new System.Windows.Forms.ListBox();
-			this.splitterLeftTop = new System.Windows.Forms.Splitter();
-			this.labelTables = new System.Windows.Forms.Label();
-			this.splitterLefts = new System.Windows.Forms.Splitter();
-			this.textBoxTableDescription = new System.Windows.Forms.TextBox();
-			this.mainMenu = new System.Windows.Forms.MainMenu();
-			this.menuItemFile = new System.Windows.Forms.MenuItem();
-			this.Open = new System.Windows.Forms.MenuItem();
-			this.menuItemAbout = new System.Windows.Forms.MenuItem();
-			this.openFileDialogDFFile = new System.Windows.Forms.OpenFileDialog();
-			this.statusBar = new System.Windows.Forms.StatusBar();
-			this.splitterStatusBar = new System.Windows.Forms.Splitter();
-			this.panelGeneral = new System.Windows.Forms.Panel();
-			this.dataSet = new System.Data.DataSet();
-			this.panelRight.SuspendLayout();
-			this.panelRightTop.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridFields)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.dataTableFields)).BeginInit();
-			this.panelLeft.SuspendLayout();
-			this.panelLeftTop.SuspendLayout();
-			this.panelGeneral.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
-			this.SuspendLayout();
-			// 
-			// splitterLeftRight
-			// 
-			this.splitterLeftRight.Location = new System.Drawing.Point(144, 0);
-			this.splitterLeftRight.Name = "splitterLeftRight";
-			this.splitterLeftRight.Size = new System.Drawing.Size(3, 388);
-			this.splitterLeftRight.TabIndex = 7;
-			this.splitterLeftRight.TabStop = false;
-			// 
-			// panelRight
-			// 
-			this.panelRight.Controls.Add(this.panelRightTop);
-			this.panelRight.Controls.Add(this.splitterRights);
-			this.panelRight.Controls.Add(this.textBoxFieldDescription);
-			this.panelRight.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.panelRight.Location = new System.Drawing.Point(144, 0);
-			this.panelRight.Name = "panelRight";
-			this.panelRight.Size = new System.Drawing.Size(388, 388);
-			this.panelRight.TabIndex = 10;
-			// 
-			// panelRightTop
-			// 
-			this.panelRightTop.Controls.Add(this.dataGridFields);
-			this.panelRightTop.Controls.Add(this.splitterRightTop);
-			this.panelRightTop.Controls.Add(this.labelFields);
-			this.panelRightTop.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.panelRightTop.Location = new System.Drawing.Point(0, 0);
-			this.panelRightTop.Name = "panelRightTop";
-			this.panelRightTop.Size = new System.Drawing.Size(388, 265);
-			this.panelRightTop.TabIndex = 3;
-			// 
-			// dataGridFields
-			// 
-			this.dataGridFields.AllowDrop = true;
-			this.dataGridFields.CaptionVisible = false;
-			this.dataGridFields.DataMember = "";
-			this.dataGridFields.DataSource = this.dataTableFields;
-			this.dataGridFields.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.dataGridFields.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-			this.dataGridFields.Location = new System.Drawing.Point(0, 17);
-			this.dataGridFields.Name = "dataGridFields";
-			this.dataGridFields.ParentRowsVisible = false;
-			this.dataGridFields.PreferredColumnWidth = 100;
-			this.dataGridFields.ReadOnly = true;
-			this.dataGridFields.RowHeadersVisible = false;
-			this.dataGridFields.RowHeaderWidth = 50;
-			this.dataGridFields.Size = new System.Drawing.Size(388, 248);
-			this.dataGridFields.TabIndex = 3;
-			this.dataGridFields.SizeChanged += new System.EventHandler(this.dataGridFields_SizeChanged);
-			this.dataGridFields.CurrentCellChanged += new System.EventHandler(this.listBoxFields_SelectedIndexChanged);
-			// 
-			// dataTableFields
-			// 
-			this.dataTableFields.Columns.AddRange(new System.Data.DataColumn[] {
-																				   this.dataColumnFieldName,
-																				   this.dataColumnShortDescription});
-			this.dataTableFields.TableName = "TableFields";
-			// 
-			// dataColumnFieldName
-			// 
-			this.dataColumnFieldName.Caption = "Name";
-			this.dataColumnFieldName.ColumnName = "ColumnFieldName";
-			this.dataColumnFieldName.DefaultValue = "";
-			this.dataColumnFieldName.ReadOnly = true;
-			// 
-			// dataColumnShortDescription
-			// 
-			this.dataColumnShortDescription.Caption = "Short description";
-			this.dataColumnShortDescription.ColumnName = "ColumnFieldShortDescription";
-			this.dataColumnShortDescription.DefaultValue = "";
-			this.dataColumnShortDescription.ReadOnly = true;
-			// 
-			// splitterRightTop
-			// 
-			this.splitterRightTop.Dock = System.Windows.Forms.DockStyle.Top;
-			this.splitterRightTop.Location = new System.Drawing.Point(0, 16);
-			this.splitterRightTop.Name = "splitterRightTop";
-			this.splitterRightTop.Size = new System.Drawing.Size(388, 1);
-			this.splitterRightTop.TabIndex = 2;
-			this.splitterRightTop.TabStop = false;
-			// 
-			// labelFields
-			// 
-			this.labelFields.AutoSize = true;
-			this.labelFields.Dock = System.Windows.Forms.DockStyle.Top;
-			this.labelFields.Location = new System.Drawing.Point(0, 0);
-			this.labelFields.Name = "labelFields";
-			this.labelFields.Size = new System.Drawing.Size(35, 16);
-			this.labelFields.TabIndex = 1;
-			this.labelFields.Text = "Fields";
-			// 
-			// splitterRights
-			// 
-			this.splitterRights.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.splitterRights.Location = new System.Drawing.Point(0, 265);
-			this.splitterRights.Name = "splitterRights";
-			this.splitterRights.Size = new System.Drawing.Size(388, 3);
-			this.splitterRights.TabIndex = 2;
-			this.splitterRights.TabStop = false;
-			// 
-			// textBoxFieldDescription
-			// 
-			this.textBoxFieldDescription.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.textBoxFieldDescription.Location = new System.Drawing.Point(0, 268);
-			this.textBoxFieldDescription.Multiline = true;
-			this.textBoxFieldDescription.Name = "textBoxFieldDescription";
-			this.textBoxFieldDescription.ReadOnly = true;
-			this.textBoxFieldDescription.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-			this.textBoxFieldDescription.Size = new System.Drawing.Size(388, 120);
-			this.textBoxFieldDescription.TabIndex = 1;
-			this.textBoxFieldDescription.Text = "";
-			// 
-			// panelLeft
-			// 
-			this.panelLeft.Controls.Add(this.panelLeftTop);
-			this.panelLeft.Controls.Add(this.splitterLefts);
-			this.panelLeft.Controls.Add(this.textBoxTableDescription);
-			this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
-			this.panelLeft.Location = new System.Drawing.Point(0, 0);
-			this.panelLeft.Name = "panelLeft";
-			this.panelLeft.Size = new System.Drawing.Size(144, 388);
-			this.panelLeft.TabIndex = 6;
-			// 
-			// panelLeftTop
-			// 
-			this.panelLeftTop.Controls.Add(this.listBoxTables);
-			this.panelLeftTop.Controls.Add(this.splitterLeftTop);
-			this.panelLeftTop.Controls.Add(this.labelTables);
-			this.panelLeftTop.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.panelLeftTop.Location = new System.Drawing.Point(0, 0);
-			this.panelLeftTop.Name = "panelLeftTop";
-			this.panelLeftTop.Size = new System.Drawing.Size(144, 239);
-			this.panelLeftTop.TabIndex = 3;
-			// 
-			// listBoxTables
-			// 
-			this.listBoxTables.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.listBoxTables.Location = new System.Drawing.Point(0, 17);
-			this.listBoxTables.Name = "listBoxTables";
-			this.listBoxTables.Size = new System.Drawing.Size(144, 212);
-			this.listBoxTables.TabIndex = 1;
-			this.listBoxTables.SelectedIndexChanged += new System.EventHandler(this.listBoxTables_SelectedIndexChanged);
-			// 
-			// splitterLeftTop
-			// 
-			this.splitterLeftTop.Dock = System.Windows.Forms.DockStyle.Top;
-			this.splitterLeftTop.Location = new System.Drawing.Point(0, 16);
-			this.splitterLeftTop.Name = "splitterLeftTop";
-			this.splitterLeftTop.Size = new System.Drawing.Size(144, 1);
-			this.splitterLeftTop.TabIndex = 0;
-			this.splitterLeftTop.TabStop = false;
-			// 
-			// labelTables
-			// 
-			this.labelTables.AutoSize = true;
-			this.labelTables.Dock = System.Windows.Forms.DockStyle.Top;
-			this.labelTables.Location = new System.Drawing.Point(0, 0);
-			this.labelTables.Name = "labelTables";
-			this.labelTables.Size = new System.Drawing.Size(38, 16);
-			this.labelTables.TabIndex = 0;
-			this.labelTables.Text = "Tables";
-			// 
-			// splitterLefts
-			// 
-			this.splitterLefts.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.splitterLefts.Location = new System.Drawing.Point(0, 239);
-			this.splitterLefts.Name = "splitterLefts";
-			this.splitterLefts.Size = new System.Drawing.Size(144, 3);
-			this.splitterLefts.TabIndex = 2;
-			this.splitterLefts.TabStop = false;
-			// 
-			// textBoxTableDescription
-			// 
-			this.textBoxTableDescription.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.textBoxTableDescription.Location = new System.Drawing.Point(0, 242);
-			this.textBoxTableDescription.Multiline = true;
-			this.textBoxTableDescription.Name = "textBoxTableDescription";
-			this.textBoxTableDescription.ReadOnly = true;
-			this.textBoxTableDescription.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-			this.textBoxTableDescription.Size = new System.Drawing.Size(144, 146);
-			this.textBoxTableDescription.TabIndex = 1;
-			this.textBoxTableDescription.Text = "";
-			// 
-			// mainMenu
-			// 
-			this.mainMenu.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-																					 this.menuItemFile,
-																					 this.menuItemAbout});
-			// 
-			// menuItemFile
-			// 
-			this.menuItemFile.Index = 0;
-			this.menuItemFile.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-																						 this.Open});
-			this.menuItemFile.Text = "File";
-			// 
-			// Open
-			// 
-			this.Open.Index = 0;
-			this.Open.Shortcut = System.Windows.Forms.Shortcut.CtrlO;
-			this.Open.Text = "Open";
-			this.Open.Click += new System.EventHandler(this.Open_Click);
-			// 
-			// menuItemAbout
-			// 
-			this.menuItemAbout.Index = 1;
-			this.menuItemAbout.Text = "About";
-			this.menuItemAbout.Click += new System.EventHandler(this.menuItemAbout_Click);
-			// 
-			// openFileDialogDFFile
-			// 
-			this.openFileDialogDFFile.DefaultExt = "*.df";
-			this.openFileDialogDFFile.Filter = "Progress Openedge 4GL database definition files|*.df|All files|*.*";
-			this.openFileDialogDFFile.Title = "Open a Progress Openedge 4GL database definition file";
-			// 
-			// statusBar
-			// 
-			this.statusBar.Location = new System.Drawing.Point(0, 537);
-			this.statusBar.Name = "statusBar";
-			this.statusBar.Size = new System.Drawing.Size(768, 16);
-			this.statusBar.TabIndex = 0;
-			// 
-			// splitterStatusBar
-			// 
-			this.splitterStatusBar.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.splitterStatusBar.Location = new System.Drawing.Point(0, 536);
-			this.splitterStatusBar.Name = "splitterStatusBar";
-			this.splitterStatusBar.Size = new System.Drawing.Size(768, 1);
-			this.splitterStatusBar.TabIndex = 0;
-			this.splitterStatusBar.TabStop = false;
-			// 
-			// panelGeneral
-			// 
-			this.panelGeneral.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.panelGeneral.Controls.Add(this.splitterLeftRight);
-			this.panelGeneral.Controls.Add(this.panelRight);
-			this.panelGeneral.Controls.Add(this.panelLeft);
-			this.panelGeneral.Location = new System.Drawing.Point(24, 16);
-			this.panelGeneral.Name = "panelGeneral";
-			this.panelGeneral.Size = new System.Drawing.Size(536, 392);
-			this.panelGeneral.TabIndex = 2;
-			// 
-			// dataSet
-			// 
-			this.dataSet.DataSetName = "dataSet";
-			this.dataSet.Locale = new System.Globalization.CultureInfo("en-US");
-			this.dataSet.Tables.AddRange(new System.Data.DataTable[] {
-																		 this.dataTableFields});
-			// 
-			// FormUI
-			// 
-			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-			this.ClientSize = new System.Drawing.Size(768, 553);
-			this.Controls.Add(this.panelGeneral);
-			this.Controls.Add(this.splitterStatusBar);
-			this.Controls.Add(this.statusBar);
-			this.Menu = this.mainMenu;
-			this.Name = "FormUI";
-			this.Text = "Progress Openedge 4GL database structure explorer";
-			this.panelRight.ResumeLayout(false);
-			this.panelRightTop.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.dataGridFields)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.dataTableFields)).EndInit();
-			this.panelLeft.ResumeLayout(false);
-			this.panelLeftTop.ResumeLayout(false);
-			this.panelGeneral.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.dataSet)).EndInit();
-			this.ResumeLayout(false);
+            this.components = new System.ComponentModel.Container();
+            this.splitterLeftRight = new System.Windows.Forms.Splitter();
+            this.panelRight = new System.Windows.Forms.Panel();
+            this.panelRightTop = new System.Windows.Forms.Panel();
+            this.dataGridFields = new System.Windows.Forms.DataGrid();
+            this.dataTableFields = new System.Data.DataTable();
+            this.dataColumnFieldName = new System.Data.DataColumn();
+            this.dataColumnShortDescription = new System.Data.DataColumn();
+            this.splitterRightTop = new System.Windows.Forms.Splitter();
+            this.labelFields = new System.Windows.Forms.Label();
+            this.splitterRights = new System.Windows.Forms.Splitter();
+            this.textBoxFieldDescription = new System.Windows.Forms.TextBox();
+            this.panelLeft = new System.Windows.Forms.Panel();
+            this.panelLeftTop = new System.Windows.Forms.Panel();
+            this.listBoxTables = new System.Windows.Forms.ListBox();
+            this.splitterLeftTop = new System.Windows.Forms.Splitter();
+            this.labelTables = new System.Windows.Forms.Label();
+            this.splitterLefts = new System.Windows.Forms.Splitter();
+            this.textBoxTableDescription = new System.Windows.Forms.TextBox();
+            this.mainMenu = new System.Windows.Forms.MainMenu(this.components);
+            this.menuItemFile = new System.Windows.Forms.MenuItem();
+            this.Open = new System.Windows.Forms.MenuItem();
+            this.menuItemAbout = new System.Windows.Forms.MenuItem();
+            this.openFileDialogDFFile = new System.Windows.Forms.OpenFileDialog();
+            this.statusBar = new System.Windows.Forms.StatusBar();
+            this.splitterStatusBar = new System.Windows.Forms.Splitter();
+            this.panelGeneral = new System.Windows.Forms.Panel();
+            this.dataSet = new System.Data.DataSet();
+            this.panelRight.SuspendLayout();
+            this.panelRightTop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridFields)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataTableFields)).BeginInit();
+            this.panelLeft.SuspendLayout();
+            this.panelLeftTop.SuspendLayout();
+            this.panelGeneral.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // splitterLeftRight
+            // 
+            this.splitterLeftRight.Location = new System.Drawing.Point(144, 0);
+            this.splitterLeftRight.Name = "splitterLeftRight";
+            this.splitterLeftRight.Size = new System.Drawing.Size(3, 388);
+            this.splitterLeftRight.TabIndex = 7;
+            this.splitterLeftRight.TabStop = false;
+            // 
+            // panelRight
+            // 
+            this.panelRight.Controls.Add(this.panelRightTop);
+            this.panelRight.Controls.Add(this.splitterRights);
+            this.panelRight.Controls.Add(this.textBoxFieldDescription);
+            this.panelRight.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelRight.Location = new System.Drawing.Point(144, 0);
+            this.panelRight.Name = "panelRight";
+            this.panelRight.Size = new System.Drawing.Size(388, 388);
+            this.panelRight.TabIndex = 10;
+            // 
+            // panelRightTop
+            // 
+            this.panelRightTop.Controls.Add(this.dataGridFields);
+            this.panelRightTop.Controls.Add(this.splitterRightTop);
+            this.panelRightTop.Controls.Add(this.labelFields);
+            this.panelRightTop.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelRightTop.Location = new System.Drawing.Point(0, 0);
+            this.panelRightTop.Name = "panelRightTop";
+            this.panelRightTop.Size = new System.Drawing.Size(388, 265);
+            this.panelRightTop.TabIndex = 3;
+            // 
+            // dataGridFields
+            // 
+            this.dataGridFields.AllowDrop = true;
+            this.dataGridFields.CaptionVisible = false;
+            this.dataGridFields.DataMember = "";
+            this.dataGridFields.DataSource = this.dataTableFields;
+            this.dataGridFields.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridFields.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.dataGridFields.Location = new System.Drawing.Point(0, 14);
+            this.dataGridFields.Name = "dataGridFields";
+            this.dataGridFields.ParentRowsVisible = false;
+            this.dataGridFields.PreferredColumnWidth = 100;
+            this.dataGridFields.ReadOnly = true;
+            this.dataGridFields.RowHeadersVisible = false;
+            this.dataGridFields.RowHeaderWidth = 50;
+            this.dataGridFields.Size = new System.Drawing.Size(388, 251);
+            this.dataGridFields.TabIndex = 3;
+            this.dataGridFields.CurrentCellChanged += new System.EventHandler(this.listBoxFields_SelectedIndexChanged);
+            this.dataGridFields.SizeChanged += new System.EventHandler(this.dataGridFields_SizeChanged);
+            // 
+            // dataTableFields
+            // 
+            this.dataTableFields.Columns.AddRange(new System.Data.DataColumn[] {
+            this.dataColumnFieldName,
+            this.dataColumnShortDescription});
+            this.dataTableFields.TableName = "TableFields";
+            // 
+            // dataColumnFieldName
+            // 
+            this.dataColumnFieldName.Caption = "Name";
+            this.dataColumnFieldName.ColumnName = "ColumnFieldName";
+            this.dataColumnFieldName.DefaultValue = "";
+            this.dataColumnFieldName.ReadOnly = true;
+            // 
+            // dataColumnShortDescription
+            // 
+            this.dataColumnShortDescription.Caption = "Short description";
+            this.dataColumnShortDescription.ColumnName = "ColumnFieldShortDescription";
+            this.dataColumnShortDescription.DefaultValue = "";
+            this.dataColumnShortDescription.ReadOnly = true;
+            // 
+            // splitterRightTop
+            // 
+            this.splitterRightTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.splitterRightTop.Location = new System.Drawing.Point(0, 13);
+            this.splitterRightTop.Name = "splitterRightTop";
+            this.splitterRightTop.Size = new System.Drawing.Size(388, 1);
+            this.splitterRightTop.TabIndex = 2;
+            this.splitterRightTop.TabStop = false;
+            // 
+            // labelFields
+            // 
+            this.labelFields.AutoSize = true;
+            this.labelFields.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labelFields.Location = new System.Drawing.Point(0, 0);
+            this.labelFields.Name = "labelFields";
+            this.labelFields.Size = new System.Drawing.Size(34, 13);
+            this.labelFields.TabIndex = 1;
+            this.labelFields.Text = "Fields";
+            // 
+            // splitterRights
+            // 
+            this.splitterRights.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.splitterRights.Location = new System.Drawing.Point(0, 265);
+            this.splitterRights.Name = "splitterRights";
+            this.splitterRights.Size = new System.Drawing.Size(388, 3);
+            this.splitterRights.TabIndex = 2;
+            this.splitterRights.TabStop = false;
+            // 
+            // textBoxFieldDescription
+            // 
+            this.textBoxFieldDescription.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.textBoxFieldDescription.Location = new System.Drawing.Point(0, 268);
+            this.textBoxFieldDescription.Multiline = true;
+            this.textBoxFieldDescription.Name = "textBoxFieldDescription";
+            this.textBoxFieldDescription.ReadOnly = true;
+            this.textBoxFieldDescription.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBoxFieldDescription.Size = new System.Drawing.Size(388, 120);
+            this.textBoxFieldDescription.TabIndex = 1;
+            // 
+            // panelLeft
+            // 
+            this.panelLeft.Controls.Add(this.panelLeftTop);
+            this.panelLeft.Controls.Add(this.splitterLefts);
+            this.panelLeft.Controls.Add(this.textBoxTableDescription);
+            this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelLeft.Location = new System.Drawing.Point(0, 0);
+            this.panelLeft.Name = "panelLeft";
+            this.panelLeft.Size = new System.Drawing.Size(144, 388);
+            this.panelLeft.TabIndex = 6;
+            // 
+            // panelLeftTop
+            // 
+            this.panelLeftTop.Controls.Add(this.listBoxTables);
+            this.panelLeftTop.Controls.Add(this.splitterLeftTop);
+            this.panelLeftTop.Controls.Add(this.labelTables);
+            this.panelLeftTop.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelLeftTop.Location = new System.Drawing.Point(0, 0);
+            this.panelLeftTop.Name = "panelLeftTop";
+            this.panelLeftTop.Size = new System.Drawing.Size(144, 239);
+            this.panelLeftTop.TabIndex = 3;
+            // 
+            // listBoxTables
+            // 
+            this.listBoxTables.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBoxTables.Location = new System.Drawing.Point(0, 14);
+            this.listBoxTables.Name = "listBoxTables";
+            this.listBoxTables.Size = new System.Drawing.Size(144, 225);
+            this.listBoxTables.TabIndex = 1;
+            this.listBoxTables.SelectedIndexChanged += new System.EventHandler(this.listBoxTables_SelectedIndexChanged);
+            // 
+            // splitterLeftTop
+            // 
+            this.splitterLeftTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.splitterLeftTop.Location = new System.Drawing.Point(0, 13);
+            this.splitterLeftTop.Name = "splitterLeftTop";
+            this.splitterLeftTop.Size = new System.Drawing.Size(144, 1);
+            this.splitterLeftTop.TabIndex = 0;
+            this.splitterLeftTop.TabStop = false;
+            // 
+            // labelTables
+            // 
+            this.labelTables.AutoSize = true;
+            this.labelTables.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labelTables.Location = new System.Drawing.Point(0, 0);
+            this.labelTables.Name = "labelTables";
+            this.labelTables.Size = new System.Drawing.Size(39, 13);
+            this.labelTables.TabIndex = 0;
+            this.labelTables.Text = "Tables";
+            // 
+            // splitterLefts
+            // 
+            this.splitterLefts.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.splitterLefts.Location = new System.Drawing.Point(0, 239);
+            this.splitterLefts.Name = "splitterLefts";
+            this.splitterLefts.Size = new System.Drawing.Size(144, 3);
+            this.splitterLefts.TabIndex = 2;
+            this.splitterLefts.TabStop = false;
+            // 
+            // textBoxTableDescription
+            // 
+            this.textBoxTableDescription.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.textBoxTableDescription.Location = new System.Drawing.Point(0, 242);
+            this.textBoxTableDescription.Multiline = true;
+            this.textBoxTableDescription.Name = "textBoxTableDescription";
+            this.textBoxTableDescription.ReadOnly = true;
+            this.textBoxTableDescription.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBoxTableDescription.Size = new System.Drawing.Size(144, 146);
+            this.textBoxTableDescription.TabIndex = 1;
+            // 
+            // mainMenu
+            // 
+            this.mainMenu.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.menuItemFile,
+            this.menuItemAbout});
+            // 
+            // menuItemFile
+            // 
+            this.menuItemFile.Index = 0;
+            this.menuItemFile.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.Open});
+            this.menuItemFile.Text = "File";
+            // 
+            // Open
+            // 
+            this.Open.Index = 0;
+            this.Open.Shortcut = System.Windows.Forms.Shortcut.CtrlO;
+            this.Open.Text = "Open";
+            this.Open.Click += new System.EventHandler(this.Open_Click);
+            // 
+            // menuItemAbout
+            // 
+            this.menuItemAbout.Index = 1;
+            this.menuItemAbout.Text = "About";
+            this.menuItemAbout.Click += new System.EventHandler(this.menuItemAbout_Click);
+            // 
+            // openFileDialogDFFile
+            // 
+            this.openFileDialogDFFile.DefaultExt = "*.df";
+            this.openFileDialogDFFile.Filter = "Progress Openedge 4GL database definition files|*.df|All files|*.*";
+            this.openFileDialogDFFile.Title = "Open a Progress Openedge 4GL database definition file";
+            // 
+            // statusBar
+            // 
+            this.statusBar.Location = new System.Drawing.Point(0, 537);
+            this.statusBar.Name = "statusBar";
+            this.statusBar.Size = new System.Drawing.Size(768, 16);
+            this.statusBar.TabIndex = 0;
+            // 
+            // splitterStatusBar
+            // 
+            this.splitterStatusBar.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.splitterStatusBar.Location = new System.Drawing.Point(0, 536);
+            this.splitterStatusBar.Name = "splitterStatusBar";
+            this.splitterStatusBar.Size = new System.Drawing.Size(768, 1);
+            this.splitterStatusBar.TabIndex = 0;
+            this.splitterStatusBar.TabStop = false;
+            // 
+            // panelGeneral
+            // 
+            this.panelGeneral.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panelGeneral.Controls.Add(this.splitterLeftRight);
+            this.panelGeneral.Controls.Add(this.panelRight);
+            this.panelGeneral.Controls.Add(this.panelLeft);
+            this.panelGeneral.Location = new System.Drawing.Point(24, 16);
+            this.panelGeneral.Name = "panelGeneral";
+            this.panelGeneral.Size = new System.Drawing.Size(536, 392);
+            this.panelGeneral.TabIndex = 2;
+            // 
+            // dataSet
+            // 
+            this.dataSet.DataSetName = "dataSet";
+            this.dataSet.Locale = new System.Globalization.CultureInfo("en-US");
+            this.dataSet.Tables.AddRange(new System.Data.DataTable[] {
+            this.dataTableFields});
+            // 
+            // FormUI
+            // 
+            this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
+            this.ClientSize = new System.Drawing.Size(768, 553);
+            this.Controls.Add(this.panelGeneral);
+            this.Controls.Add(this.splitterStatusBar);
+            this.Controls.Add(this.statusBar);
+            this.Menu = this.mainMenu;
+            this.Name = "FormUI";
+            this.Text = "Progress Openedge 4GL database structure explorer";
+            this.panelRight.ResumeLayout(false);
+            this.panelRight.PerformLayout();
+            this.panelRightTop.ResumeLayout(false);
+            this.panelRightTop.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridFields)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataTableFields)).EndInit();
+            this.panelLeft.ResumeLayout(false);
+            this.panelLeft.PerformLayout();
+            this.panelLeftTop.ResumeLayout(false);
+            this.panelLeftTop.PerformLayout();
+            this.panelGeneral.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet)).EndInit();
+            this.ResumeLayout(false);
 
 		}
 		#endregion
@@ -603,8 +603,7 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show(ex.Message,
-					"Unexpected error when processing selection changes event");
+				MessageBox.Show(ex.Message, "Unexpected error when processing selection changes event");
 			}
 		}
 

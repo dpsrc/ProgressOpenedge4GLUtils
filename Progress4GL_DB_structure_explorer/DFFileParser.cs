@@ -5,7 +5,7 @@ using System.IO;
 namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 {
 	/// <summary>
-	/// Encapsulated the field information
+	/// Encapsulates the field information
 	/// </summary>
 	public class FieldInfo
 	{
@@ -58,7 +58,7 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 	}
 
 	/// <summary>
-	/// Encapsulated the table information
+	/// Encapsulates the table information
 	/// </summary>
 	public class TableInfo
 	{
@@ -102,7 +102,7 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 	}
 
 	/// <summary>
-	/// Encapsulated the database information
+	/// Encapsulates the database information
 	/// </summary>
 	public class DatabaseInfo
 	{

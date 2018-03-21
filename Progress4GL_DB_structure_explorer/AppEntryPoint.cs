@@ -8,13 +8,6 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 	/// </summary>
 	public class AppEntryPoint
 	{
-		public AppEntryPoint()
-		{
-			//
-			// TODO: Add constructor logic here
-			//
-		}
-
 		/// <summary>
 		/// The main entry point for the application.
 		/// </summary>

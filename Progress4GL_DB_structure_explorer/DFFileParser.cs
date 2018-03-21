@@ -133,7 +133,7 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 	}
 
 	/// <summary>
-	/// Parser of the .DF file (INFO database definition).
+	/// Parser of the .df file (INFO database definition).
 	/// </summary>
 	public class DFFileParser
 	{
@@ -160,16 +160,16 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 		}
 
 		/// <summary>
-		/// Constructor. Parses the .DF file.
+		/// Constructor. Parses the .df file.
 		/// </summary>
-		/// <param name="fileName">.DF file name.</param>
+		/// <param name="fileName">.df file name.</param>
 		/// <exception cref="ArgumentException">if fileName is null.</exception>
-		/// <exception cref="FileNotFoundException">if the .DF file does not exist etc.</exception>
+		/// <exception cref="FileNotFoundException">if the .df file does not exist etc.</exception>
 		/// <exception cref="IOException">other IO exception</exception>
 		public DFFileParser(string fileName)
 		{
 			if (fileName == null)
-				throw new ArgumentException("Non-null .DF file name is required for DFFileParser");
+				throw new ArgumentException("Non-null .df file name is required for DFFileParser");
 
 			if (! File.Exists(fileName))
 				throw new IOException(string.Format("The {0} file does not exist"));

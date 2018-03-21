@@ -502,7 +502,7 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 		}
 
 		/// <summary>
-		/// Processed parsed .DF file.
+		/// Processed parsed .df file.
 		/// Since this method id private and is free from any dummy calls,
 		/// its input parameter is not checked for correctness.
 		/// </summary>
@@ -543,8 +543,8 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 
 		/// <summary>
 		/// Clears table and field list boxes, description texts with
-		/// information from parsed .DF file.
-		/// Puts .DF file name into the status bar.
+		/// information from parsed .df file.
+		/// Puts .df file name into the status bar.
 		/// </summary>
 		private void UpdateFromDatabaseDefinition()
 		{
@@ -562,7 +562,7 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 			}
 			catch (Exception e)
 			{
-				MessageBox.Show(e.Message, "Unknown error during updating from parsed .DF file");
+				MessageBox.Show(e.Message, "Unknown error during updating from parsed .df file");
 				ClearVisually();
 				throw;
 			}

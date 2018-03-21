@@ -2,9 +2,9 @@
 ## Ignore all the CVS and WinCVS files
 ##
 
+CVS
+CVS/*
 .#*
-
-
 
 
 ## Ignore Visual Studio temporary files, build results, and

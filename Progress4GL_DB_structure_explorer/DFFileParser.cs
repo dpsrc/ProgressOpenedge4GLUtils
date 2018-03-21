@@ -20,12 +20,11 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 		/// </summary>
 		/// <param name="fieldName"></param>
 		/// <param name="fieldDescription"></param>
-		/// <exception cref="ArgumentException">if fieldName or fields is null.</exception>
+		/// <exception cref="ArgumentException">if fieldName is null.</exception>
 		public FieldInfo(string fieldName, string fieldDescription)
 		{
 			if (fieldName == null)
-				throw new ArgumentException(
-					"Non-null fieldName is required for the DatabaseInfo");
+				throw new ArgumentException("Non-null fieldName is required for the DatabaseInfo");
 
 			FieldName = fieldName;
 			FieldDescription = fieldDescription;
@@ -79,8 +78,7 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 		public TableInfo(string tableName, string description, IDictionary fields)
 		{
 			if ((fields == null) || (tableName == null))
-				throw new ArgumentException(
-					"Non-null tableName and fields are required for the DatabaseInfo");
+				throw new ArgumentException("Non-null tableName and fields are required for the DatabaseInfo");
 
 			TableName = tableName;
 

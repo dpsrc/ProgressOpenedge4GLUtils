@@ -460,8 +460,10 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 
 				if (dialogResult == DialogResult.OK)
 				{
-					if (! File.Exists(openFileDialogDFFile.FileName))
-						MessageBox.Show(string.Format("The {0} file does not exist"));
+                    String fileName = openFileDialogDFFile.FileName;
+
+                    if (! File.Exists(fileName))
+						MessageBox.Show(string.Format("The {0} file does not exist", fileName));
 
 					try
 					{

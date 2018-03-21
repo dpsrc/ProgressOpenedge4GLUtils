@@ -424,7 +424,6 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 		{
 			string tableNameSelected = listBoxTables.SelectedItem as string;
 
-			//// listBoxFields.Items.Clear();
 			dataTableFields.Rows.Clear();
 
 			TableInfo tableInfo = _dbInfo.Tables[tableNameSelected] as TableInfo;
@@ -432,7 +431,6 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 			IDictionary fields = tableInfo.Fields;
 			foreach (string fieldName in fields.Keys)
 			{
-				//// listBoxFields.Items.Add(fieldName);
 				DataRow dataRow = dataTableFields.NewRow();
 				dataRow["ColumnFieldName"] = fieldName;
 				dataRow["ColumnFieldShortDescription"] = 
@@ -589,7 +587,6 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 				string tableNameSelected = listBoxTables.SelectedItem as string;
 				TableInfo tableInfo = _dbInfo.Tables[tableNameSelected] as TableInfo;
 
-				////string FieldNameSelected = listBoxFields.SelectedItem as string;
 				try
 				{
 					string FieldNameSelected = 

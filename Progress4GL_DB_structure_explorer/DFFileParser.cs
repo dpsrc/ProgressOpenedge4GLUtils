@@ -5,7 +5,7 @@ using System.IO;
 namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 {
 	/// <summary>
-	/// Parser of the .df file (INFO database definition).
+	/// Parser of the .df file (Progress 4GL database definition).
 	/// </summary>
 	public class DFFileParser
 	{

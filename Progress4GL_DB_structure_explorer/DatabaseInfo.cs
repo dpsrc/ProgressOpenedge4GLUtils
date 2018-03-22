@@ -4,7 +4,7 @@ using System.Collections;
 namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 {
     /// <summary>
-    /// Encapsulates the database information
+    /// Encapsulates the Progress 4GL database information
     /// </summary>
     public class DatabaseInfo
     {

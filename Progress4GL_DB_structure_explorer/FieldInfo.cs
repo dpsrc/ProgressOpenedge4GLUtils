@@ -1,7 +1,7 @@
 ﻿namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 {
     /// <summary>
-    /// Encapsulates the field information
+    /// Encapsulates the Progress 4GL field information
     /// </summary>
     public class FieldInfo
     {

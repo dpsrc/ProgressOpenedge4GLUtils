@@ -30,12 +30,6 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
         /// <summary>
         /// FieldInfo by the field name.
         /// </summary>
-        public FieldInfo this[string fieldName]
-        {
-            get
-            {
-                return _fields[fieldName];
-            }
-        }
+        public FieldInfo this[string fieldName] { get => _fields[fieldName]; }
     }
 }

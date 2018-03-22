@@ -26,13 +26,7 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
         /// <summary>
         /// TableInfo by the table name.
         /// </summary>
-        public TableInfo this[string tableName]
-        {
-            get
-            {
-                return _tables[tableName];
-            }
-        }
+        public TableInfo this[string tableName] { get => _tables[tableName]; }
     }
 
 }

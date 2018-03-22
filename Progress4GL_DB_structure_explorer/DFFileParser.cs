@@ -85,17 +85,9 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 					_dbInfo = new DatabaseInfo(tables);
 				}
 			}
-			catch (FileNotFoundException)
+			catch (Exception)
 			{
 				throw;
-			}
-			catch (IOException)
-			{
-				throw;
-			}
-			catch (Exception e)
-			{
-				throw new Exception("Unknown exception", e);
 			}
 		}
 

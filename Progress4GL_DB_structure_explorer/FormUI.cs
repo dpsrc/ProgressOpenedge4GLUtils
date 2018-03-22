@@ -511,7 +511,7 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 		{
 			try
 			{
-				_dbInfo = (new DFFileParser(fileName)).DatabaseInfo;
+				_dbInfo = (new DFFileParser(fileName)).DbInfo;
 
 				UpdateFromDatabaseDefinition();
 

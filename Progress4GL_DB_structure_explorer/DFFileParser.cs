@@ -21,9 +21,9 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 		private DatabaseInfo _dbInfo;
 
 		/// <summary>
-		/// Returns the DatabaseInfo filled in with parsed values.
+		/// Returns the DbInfo filled in with parsed values.
 		/// </summary>
-		public DatabaseInfo DatabaseInfo
+		public DatabaseInfo DbInfo
 		{
 			get
 			{

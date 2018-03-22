@@ -18,7 +18,7 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
         /// <exception cref="ArgumentException">if tables is null.</exception>
         public DatabaseInfo(IDictionary tables)
         {
-            Tables = tables ?? throw new ArgumentNullException("Non-null dictionary is required for the DatabaseInfo");
+            Tables = tables ?? throw new ArgumentNullException("Non-null dictionary is required for the DbInfo");
         }
 
         /// <summary>

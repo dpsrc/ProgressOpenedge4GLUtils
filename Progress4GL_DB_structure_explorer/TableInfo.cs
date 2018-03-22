@@ -23,7 +23,7 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
         /// <exception cref="ArgumentException">if tableName or fields is null.</exception>
         public TableInfo(string description, IDictionary fields)
         {
-            Fields = fields ?? throw new ArgumentNullException("Non-null fields are required for the DatabaseInfo");
+            Fields = fields ?? throw new ArgumentNullException("Non-null fields are required for the DbInfo");
             _tableDescription = description ?? "";
         }
 

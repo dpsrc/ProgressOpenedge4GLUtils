@@ -23,13 +23,7 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 		/// <summary>
 		/// Returns the DbInfo filled in with parsed values.
 		/// </summary>
-		public DatabaseInfo DbInfo
-		{
-			get
-			{
-				return _dbInfo;
-			}
-		}
+		public DatabaseInfo DbInfo { get => _dbInfo; }
 
 		/// <summary>
 		/// Constructor. Parses the .df file.

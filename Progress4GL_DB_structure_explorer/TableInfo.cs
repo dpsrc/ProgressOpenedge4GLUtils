@@ -30,6 +30,8 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
         /// <summary>
         /// FieldInfo by the field name.
         /// </summary>
+        /// <param name="fieldName"></param>
+        /// <returns>Field info by the field name.</returns>
         public FieldInfo this[string fieldName] { get => _fields[fieldName]; }
     }
 }

@@ -1,5 +1,5 @@
 using System;
-using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 
 namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
@@ -46,9 +46,9 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 				//
 				using (StreamReader sr = new StreamReader(fileName)) 
 				{
-					String line;
+					string line;
 
-					IDictionary tables = new SortedList();
+					IDictionary<string, TableInfo> tables = new SortedList<string, TableInfo>();
 
 					// Read and process data
 					//
@@ -72,7 +72,7 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 								line = sr.ReadLine();
 							}
 
-							IDictionary fields = ParseFields(sr, line, ref line, ref tableDescription);
+							IDictionary<string, FieldInfo> fields = ParseFields(sr, line, ref line, ref tableDescription);
 
 							TableInfo tableInfo = new TableInfo(tableDescription, fields);
 
@@ -109,13 +109,13 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 		/// <param name="line"></param>
 		/// <param name="tableDescription"></param>
 		/// <returns></returns>
-		private IDictionary ParseFields(StreamReader sr, string addFieldLine,
+		private IDictionary<string, FieldInfo> ParseFields(StreamReader sr, string addFieldLine,
 			ref string line, ref string tableDescription)
 		{
 			string fieldDescription;
 			line = addFieldLine;
 
-			IDictionary fields = new SortedList();
+			IDictionary<string, FieldInfo> fields = new SortedList<string, FieldInfo>();
 
 			do
 			{

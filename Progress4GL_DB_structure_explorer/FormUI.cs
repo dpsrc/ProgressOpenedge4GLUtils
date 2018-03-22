@@ -1,5 +1,5 @@
 using System;
-using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.IO;
@@ -426,15 +426,14 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 
 			dataTableFields.Rows.Clear();
 
-			TableInfo tableInfo = _dbInfo.Tables[tableNameSelected] as TableInfo;
+			TableInfo tableInfo = _dbInfo[tableNameSelected];
 			textBoxTableDescription.Lines = tableInfo.TableDescription.Split(new char[] {'\n'});
-			IDictionary fields = tableInfo.Fields;
+			IDictionary<string, FieldInfo> fields = tableInfo.Fields;
 			foreach (string fieldName in fields.Keys)
 			{
 				DataRow dataRow = dataTableFields.NewRow();
 				dataRow["ColumnFieldName"] = fieldName;
-				dataRow["ColumnFieldShortDescription"] = 
-					(fields[fieldName] as FieldInfo).ShortFieldDescription;
+				dataRow["ColumnFieldShortDescription"] = fields[fieldName].ShortFieldDescription;
 				dataTableFields.Rows.Add(dataRow);
 			}
 
@@ -458,7 +457,7 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 
 				if (dialogResult == DialogResult.OK)
 				{
-                    String fileName = openFileDialogDFFile.FileName;
+                    string fileName = openFileDialogDFFile.FileName;
 
                     if (! File.Exists(fileName))
 						MessageBox.Show(string.Format("The {0} file does not exist", fileName));
@@ -585,14 +584,13 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 			try
 			{
 				string tableNameSelected = listBoxTables.SelectedItem as string;
-				TableInfo tableInfo = _dbInfo.Tables[tableNameSelected] as TableInfo;
+				TableInfo tableInfo = _dbInfo[tableNameSelected];
 
 				try
 				{
-					string FieldNameSelected = 
-						dataTableFields.Rows[dataGridFields.CurrentRowIndex]["ColumnFieldName"] as string;
+					string FieldNameSelected = dataTableFields.Rows[dataGridFields.CurrentRowIndex]["ColumnFieldName"] as string;
 
-					FieldInfo fieldInfo = tableInfo.Fields[FieldNameSelected] as FieldInfo;
+					FieldInfo fieldInfo = tableInfo.Fields[FieldNameSelected];
 					textBoxFieldDescription.Lines = fieldInfo.FieldDescription.Split(new char[] {'\n'});
 				}
 				catch (IndexOutOfRangeException)

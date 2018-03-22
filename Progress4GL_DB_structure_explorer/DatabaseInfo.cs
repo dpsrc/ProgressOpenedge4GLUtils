@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections;
+using System.Collections.Generic;
 
 namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 {
@@ -9,16 +9,16 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
     public class DatabaseInfo
     {
         // (string tableName, TableInfo tableInfo)
-        private IDictionary _tables = new SortedList();
+        private IDictionary<string, TableInfo> _tables = new SortedList<string, TableInfo>();
 
-        public IDictionary Tables { get => _tables; }
+        public IDictionary<string, TableInfo> Tables { get => _tables; }
 
         /// <summary>
         /// Constructor.
         /// </summary>
         /// <param name="tables">Tables of the database</param>
         /// <exception cref="ArgumentException">if tables is null.</exception>
-        public DatabaseInfo(IDictionary tables)
+        public DatabaseInfo(IDictionary<string, TableInfo> tables)
         {
             _tables = tables ?? throw new ArgumentNullException("Non-null tables dictionary is required for the DatabaseInfo");
         }
@@ -30,7 +30,7 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
         {
             get
             {
-                return _tables[tableName] as TableInfo;
+                return _tables[tableName];
             }
         }
     }

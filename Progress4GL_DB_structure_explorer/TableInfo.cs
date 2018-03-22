@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections;
+using System.Collections.Generic;
 
 namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 {
@@ -9,12 +9,11 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
     public class TableInfo
     {
         private string _tableDescription = "";
-        // (string fieldName, FieldInfo fieldInfo)
-        private IDictionary _fields = new SortedList();
+        private IDictionary<string, FieldInfo> _fields = new SortedList<string, FieldInfo>();
 
         public string TableDescription { get => _tableDescription; }
 
-        public IDictionary Fields { get => _fields; }
+        public IDictionary<string, FieldInfo> Fields { get => _fields; }
 
         /// <summary>
         /// Constructor.
@@ -22,7 +21,7 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
         /// <param name="description">Table description.</param>
         /// <param name="fields">Table fields.</param>
         /// <exception cref="ArgumentException">if tableName or fields is null.</exception>
-        public TableInfo(string description, IDictionary fields)
+        public TableInfo(string description, IDictionary<string, FieldInfo> fields)
         {
             _fields = fields ?? throw new ArgumentNullException("Non-null fields are required for the TableInfo");
             _tableDescription = description ?? "";
@@ -35,7 +34,7 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
         {
             get
             {
-                return _fields[fieldName] as FieldInfo;
+                return _fields[fieldName];
             }
         }
     }

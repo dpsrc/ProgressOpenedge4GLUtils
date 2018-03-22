@@ -22,8 +22,8 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 		private MenuItem menuItemFile;
 		private MenuItem Open;
 		private OpenFileDialog openFileDialogDFFile;
-        private IContainer components;
-        private MenuItem menuItemAbout;
+		private IContainer components;
+		private MenuItem menuItemAbout;
 
 		private DatabaseInfo _dbInfo = null;
 		private MainMenu mainMenu;

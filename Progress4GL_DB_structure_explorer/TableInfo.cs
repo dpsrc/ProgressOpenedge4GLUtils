@@ -9,11 +9,12 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
     public class TableInfo
     {
         private string _tableDescription = "";
-
         // (string fieldName, FieldInfo fieldInfo)
-        public IDictionary Fields = new SortedList();
+        private IDictionary _fields = new SortedList();
 
         public string TableDescription { get => _tableDescription; }
+
+        public IDictionary Fields { get => _fields; }
 
         /// <summary>
         /// Constructor.
@@ -23,7 +24,7 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
         /// <exception cref="ArgumentException">if tableName or fields is null.</exception>
         public TableInfo(string description, IDictionary fields)
         {
-            Fields = fields ?? throw new ArgumentNullException("Non-null fields are required for the TableInfo");
+            _fields = fields ?? throw new ArgumentNullException("Non-null fields are required for the TableInfo");
             _tableDescription = description ?? "";
         }
 
@@ -34,7 +35,7 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
         {
             get
             {
-                return Fields[fieldName] as FieldInfo;
+                return _fields[fieldName] as FieldInfo;
             }
         }
     }

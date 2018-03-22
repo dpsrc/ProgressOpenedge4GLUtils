@@ -9,7 +9,9 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
     public class DatabaseInfo
     {
         // (string tableName, TableInfo tableInfo)
-        public IDictionary Tables = new SortedList();
+        private IDictionary _tables = new SortedList();
+
+        public IDictionary Tables { get => _tables; }
 
         /// <summary>
         /// Constructor.
@@ -18,7 +20,7 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
         /// <exception cref="ArgumentException">if tables is null.</exception>
         public DatabaseInfo(IDictionary tables)
         {
-            Tables = tables ?? throw new ArgumentNullException("Non-null tables dictionary is required for the DatabaseInfo");
+            _tables = tables ?? throw new ArgumentNullException("Non-null tables dictionary is required for the DatabaseInfo");
         }
 
         /// <summary>
@@ -28,7 +30,7 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
         {
             get
             {
-                return Tables[tableName] as TableInfo;
+                return _tables[tableName] as TableInfo;
             }
         }
     }

@@ -108,7 +108,7 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 		/// <param name="addFieldLine"></param>
 		/// <param name="line"></param>
 		/// <param name="tableDescription"></param>
-		/// <returns></returns>
+		/// <returns>The fields collection.</returns>
 		private IDictionary<string, FieldInfo> ParseFields(StreamReader sr, string addFieldLine,
 			ref string line, ref string tableDescription)
 		{

@@ -108,12 +108,15 @@
     <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DatabaseInfo.cs" />
     <Compile Include="DFFileParser.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="FieldInfo.cs" />
     <Compile Include="FormUI.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="TableInfo.cs" />
     <Content Include="App.ico" />
     <EmbeddedResource Include="FormUI.resx">
       <DependentUpon>FormUI.cs</DependentUpon>

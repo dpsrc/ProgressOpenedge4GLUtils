@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 {
@@ -8,7 +9,7 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
     /// </summary>
     public class TableInfo
     {
-        private string _tableDescription = "";
+        private readonly string _tableDescription;
         private IDictionary<string, FieldInfo> _fields = new SortedList<string, FieldInfo>();
 
         public string TableDescription { get => _tableDescription; }
@@ -18,13 +19,13 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
         /// <summary>
         /// Constructor.
         /// </summary>
-        /// <param name="description">Table description.</param>
+        /// <param name="description">Table sbTableDescription.</param>
         /// <param name="fields">Table fields.</param>
         /// <exception cref="ArgumentException">if tableName or fields is null.</exception>
-        public TableInfo(string description, IDictionary<string, FieldInfo> fields)
+        public TableInfo(StringBuilder sbTableDescription, IDictionary<string, FieldInfo> fields)
         {
             _fields = fields ?? throw new ArgumentNullException("Non-null fields are required for the TableInfo");
-            _tableDescription = description ?? "";
+            _tableDescription = Utils.AdjustNewLine(sbTableDescription).ToString() ?? "";
         }
 
         /// <summary>

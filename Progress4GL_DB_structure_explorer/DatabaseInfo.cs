@@ -30,5 +30,4 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
         /// <returns>Table info by the table name.</returns>
         public TableInfo this[string tableName] { get => _tables[tableName]; }
     }
-
 }

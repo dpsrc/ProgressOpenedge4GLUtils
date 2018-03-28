@@ -117,6 +117,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="TableInfo.cs" />
+    <Compile Include="Utils.cs" />
     <Content Include="App.ico" />
     <EmbeddedResource Include="FormUI.resx">
       <DependentUpon>FormUI.cs</DependentUpon>

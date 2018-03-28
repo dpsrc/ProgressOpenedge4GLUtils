@@ -43,66 +43,80 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 
 			try
 			{
-				// Reading from file up to first non-empty line
-				//
-				using (StreamReader sr = new StreamReader(fileName)) 
-				{
-					string line;
+                IDictionary<string, TableInfo> tables = ParseTables(fileName);
 
-					IDictionary<string, TableInfo> tables = new SortedList<string, TableInfo>();
-
-					// Read and process data
-					//
-					line = sr.ReadLine();
-					while (line != null) 
-					{
-						if (line.StartsWith(_signatureAddTable))
-						{
-							// Table name
-							string tableName = line.Substring(_signatureAddTableLen).Trim(new char[] {'\"'});
-
-							line = sr.ReadLine();
-
-							StringBuilder sbTableDescription = new StringBuilder("");
-
-							while ((line != null) && (! line.StartsWith(_signatureAddField)) && (! line.StartsWith(_signatureAddTable)))
-							{
-								if (line.Trim().Length > 0)
-									sbTableDescription = sbTableDescription.AppendLine(line);
-
-								line = sr.ReadLine();
-							}
-
-							IDictionary<string, FieldInfo> fields = ParseFields(sr, line, ref line, ref sbTableDescription);
-
-                            TableInfo tableInfo = new TableInfo(sbTableDescription, fields);
-
-							tables.Add(tableName, tableInfo);
-						}
-						else
-							line = sr.ReadLine();
-					}
-
-					_dbInfo = new DatabaseInfo(tables);
-				}
-			}
-			catch (Exception)
+                _dbInfo = new DatabaseInfo(tables);
+            }
+            catch (Exception)
 			{
 				throw;
 			}
 		}
 
-		/// <summary>
-		/// Parses fields for a current table.
-		/// Since this method id private and is free from any dummy calls,
-		/// its input parameters are not checked for correctness.
-		/// </summary>
-		/// <param name="sr"></param>
-		/// <param name="addFieldLine"></param>
-		/// <param name="line"></param>
-		/// <param name="tableDescription"></param>
-		/// <returns>The fields collection.</returns>
-		private IDictionary<string, FieldInfo> ParseFields(StreamReader sr, string addFieldLine,
+        /// <summary>
+        /// Parses fields for a current table.
+        /// Since this method id private and is free from any dummy calls,
+        /// its input parameters are not checked for correctness.
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <returns>Tables collection with keys - table names</returns>
+        private static IDictionary<string, TableInfo> ParseTables(string fileName)
+        {
+            IDictionary<string, TableInfo> tables = new SortedList<string, TableInfo>();
+
+            // Reading from file up to first non-empty line
+            //
+            using (StreamReader sr = new StreamReader(fileName))
+            {
+                string line;
+
+                // Read and process data
+                //
+                line = sr.ReadLine();
+                while (line != null)
+                {
+                    if (line.StartsWith(_signatureAddTable))
+                    {
+                        // Table name
+                        string tableName = line.Substring(_signatureAddTableLen).Trim(new char[] { '\"' });
+
+                        line = sr.ReadLine();
+
+                        StringBuilder sbTableDescription = new StringBuilder("");
+
+                        while ((line != null) && (!line.StartsWith(_signatureAddField)) && (!line.StartsWith(_signatureAddTable)))
+                        {
+                            if (line.Trim().Length > 0)
+                                sbTableDescription = sbTableDescription.AppendLine(line);
+
+                            line = sr.ReadLine();
+                        }
+
+                        IDictionary<string, FieldInfo> fields = ParseFields(sr, line, ref line, ref sbTableDescription);
+
+                        TableInfo tableInfo = new TableInfo(sbTableDescription, fields);
+
+                        tables.Add(tableName, tableInfo);
+                    }
+                    else
+                        line = sr.ReadLine();
+                }
+            }
+
+            return tables;
+        }
+
+        /// <summary>
+        /// Parses fields for a current table.
+        /// Since this method id private and is free from any dummy calls,
+        /// its input parameters are not checked for correctness.
+        /// </summary>
+        /// <param name="sr"></param>
+        /// <param name="addFieldLine"></param>
+        /// <param name="line"></param>
+        /// <param name="tableDescription"></param>
+        /// <returns>The fields collection with keys - field names.</returns>
+        private static IDictionary<string, FieldInfo> ParseFields(StreamReader sr, string addFieldLine,
 			ref string line, ref StringBuilder sbTableDescription)
 		{
             line = addFieldLine;

@@ -611,8 +611,7 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 		/// <param name="e"></param>
 		private void menuItemAbout_Click(object sender, EventArgs e)
 		{
-			string about = "The Progress Openedge 4GL database structure (.df files) explorer\n\n" +
-				"Author:\nDmytro P";
+			string about = "The Progress Openedge 4GL database structure (.df files) explorer\n\nAuthor:\nDmytro P";
 
 			MessageBox.Show(about, "About", MessageBoxButtons.OK);
 		}

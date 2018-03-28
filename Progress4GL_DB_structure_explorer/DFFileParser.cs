@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 
 namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 {
@@ -62,19 +63,21 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 
 							line = sr.ReadLine();
 
-							string tableDescription = "";
+							StringBuilder sbTableDescription = new StringBuilder("");
 
 							while ((line != null) && (! line.StartsWith(_signatureAddField)) && (! line.StartsWith(_signatureAddTable)))
 							{
 								if (line.Trim().Length > 0)
-									tableDescription += line + "\n";
+									sbTableDescription = sbTableDescription.AppendLine(line);
 
 								line = sr.ReadLine();
 							}
 
-							IDictionary<string, FieldInfo> fields = ParseFields(sr, line, ref line, ref tableDescription);
+							IDictionary<string, FieldInfo> fields = ParseFields(sr, line, ref line, ref sbTableDescription);
 
-							TableInfo tableInfo = new TableInfo(tableDescription, fields);
+                            sbTableDescription = AdjustNewLine(sbTableDescription);
+
+                            TableInfo tableInfo = new TableInfo(sbTableDescription.ToString(), fields);
 
 							tables.Add(tableName, tableInfo);
 						}
@@ -102,10 +105,9 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 		/// <param name="tableDescription"></param>
 		/// <returns>The fields collection.</returns>
 		private IDictionary<string, FieldInfo> ParseFields(StreamReader sr, string addFieldLine,
-			ref string line, ref string tableDescription)
+			ref string line, ref StringBuilder sbTableDescription)
 		{
-			string fieldDescription;
-			line = addFieldLine;
+            line = addFieldLine;
 
 			IDictionary<string, FieldInfo> fields = new SortedList<string, FieldInfo>();
 
@@ -113,46 +115,56 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 			{
 				string fieldName = "";
 
-				fieldDescription = "";
+                StringBuilder sbFieldDescription = new StringBuilder("");
 
-				if (line.StartsWith(_signatureAddField))
+                if (line.StartsWith(_signatureAddField))
 				{
 					fieldName = line.Substring(_signatureAddFieldLen).Split(new char[] {'\"'})[0];
 
-					fieldDescription += line + "\n";
+                    sbFieldDescription = sbFieldDescription.AppendLine(line);
 
-					line = sr.ReadLine();
+                    line = sr.ReadLine();
 				}
 
 				while ((line != null) && (! line.StartsWith(_signatureAddField)) 
 					&& (! line.StartsWith(_signatureAddTable))
 					&& (! line.StartsWith(_signatureAddIndex)))
 				{
-					fieldDescription += line + "\n";
+                    sbFieldDescription = sbFieldDescription.AppendLine(line);
 
-					line = sr.ReadLine();
+                    line = sr.ReadLine();
 				}
 
 				// Indexes go to a table description
 				//
 				if (line.StartsWith(_signatureAddIndex))
 				{
-					tableDescription += "\n";
+					sbTableDescription = sbTableDescription.AppendLine(line);
 
 					while ((line != null) && (! line.StartsWith(_signatureAddField)) 
 						&& (! line.StartsWith(_signatureAddTable)))
 					{
-						tableDescription += line + "\n";
+						sbTableDescription = sbTableDescription.AppendLine(line);
 
 						line = sr.ReadLine();
 					}
 				}
 
-				fields.Add(fieldName, new FieldInfo(fieldDescription));
+                sbFieldDescription = AdjustNewLine(sbFieldDescription);
+
+                fields.Add(fieldName, new FieldInfo(sbFieldDescription.ToString()));
 			}
 			while ((line != null) && (! line.StartsWith(_signatureAddTable)));
 
 			return fields;
 		}
+
+        private static StringBuilder AdjustNewLine(StringBuilder sb)
+        {
+            if (Environment.NewLine != "\n")
+                sb = sb.Replace(Environment.NewLine, "\n");
+
+            return sb;
+        }
 	}
 }

@@ -1,4 +1,6 @@
-﻿namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
+﻿using System.Text;
+    
+namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 {
     /// <summary>
     /// Encapsulates the Progress 4GL field information
@@ -7,18 +9,18 @@
     {
         private static readonly string _signatureDescription = "DESCRIPTION \"";
         private static readonly int _signatureDescriptionLen = _signatureDescription.Length;
-        private string _fieldDescription = "";
+        private readonly string _fieldDescription;
 
         public string FieldDescription { get => _fieldDescription; }
 
         /// <summary>
         /// Constructor.
         /// </summary>
-        /// <param name="fieldDescription"></param>
+        /// <param name="fbieldDescription"></param>
         /// <exception cref="ArgumentException">if fieldName is null.</exception>
-        public FieldInfo(string fieldDescription)
+        public FieldInfo(StringBuilder sbFieldDescription)
         {
-            _fieldDescription = fieldDescription ?? "";
+            _fieldDescription = Utils.AdjustNewLine(sbFieldDescription).ToString() ?? "";
         }
 
         /// <summary>

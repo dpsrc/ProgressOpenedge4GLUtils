@@ -75,9 +75,7 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 
 							IDictionary<string, FieldInfo> fields = ParseFields(sr, line, ref line, ref sbTableDescription);
 
-                            sbTableDescription = AdjustNewLine(sbTableDescription);
-
-                            TableInfo tableInfo = new TableInfo(sbTableDescription.ToString(), fields);
+                            TableInfo tableInfo = new TableInfo(sbTableDescription, fields);
 
 							tables.Add(tableName, tableInfo);
 						}
@@ -150,21 +148,11 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 					}
 				}
 
-                sbFieldDescription = AdjustNewLine(sbFieldDescription);
-
-                fields.Add(fieldName, new FieldInfo(sbFieldDescription.ToString()));
+                fields.Add(fieldName, new FieldInfo(sbFieldDescription));
 			}
 			while ((line != null) && (! line.StartsWith(_signatureAddTable)));
 
 			return fields;
 		}
-
-        private static StringBuilder AdjustNewLine(StringBuilder sb)
-        {
-            if (Environment.NewLine != "\n")
-                sb = sb.Replace(Environment.NewLine, "\n");
-
-            return sb;
-        }
 	}
 }

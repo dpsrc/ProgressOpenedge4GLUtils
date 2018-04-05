@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.IO;
+using System.Text;
 using System.Windows.Forms;
 
 namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
@@ -72,16 +73,16 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 			}
 			catch (Exception ex)
 			{
-				string message = ex.Message;
+				StringBuilder message = new StringBuilder(ex.Message);
 				Exception innerEx = ex;
 
 				while (innerEx.InnerException != null)
 				{
-					message += "\n\n" + innerEx.Message;
+                    message = message.Append("\n\n").Append(innerEx.Message);
 					innerEx = innerEx.InnerException;
 				}
 
-				MessageBox.Show(message, "Unexpected error");
+				MessageBox.Show(message.ToString(), "Unexpected error");
 
 				ClearVisually();
 			}

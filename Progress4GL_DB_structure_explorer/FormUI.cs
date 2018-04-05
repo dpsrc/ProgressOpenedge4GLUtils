@@ -479,16 +479,16 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 					{
 						wasException = true;
 
-						string message = ex.Message;
+                        StringBuilder message = new StringBuilder(ex.Message);
 						Exception innerEx = ex;
 
 						while (innerEx.InnerException != null)
 						{
-							message += "\n\n" + innerEx.Message;
+							message = message.Append("\n\n").Append(innerEx.Message);
 							innerEx = innerEx.InnerException;
 						}
 
-						MessageBox.Show(message, "Unexpected error");
+						MessageBox.Show(message.ToString(), "Unexpected error");
 
 						ClearVisually();
 					}

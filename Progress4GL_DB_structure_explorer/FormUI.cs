@@ -28,21 +28,21 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 		private DatabaseInfo _dbInfo = null;
 		private MainMenu mainMenu;
 
-		private System.Windows.Forms.Panel panelLeftTop;
-		private System.Windows.Forms.Label labelTables;
-		private System.Windows.Forms.ListBox listBoxTables;
-		private System.Windows.Forms.Panel panelRightTop;
-		private System.Windows.Forms.Label labelFields;
-		private System.Windows.Forms.StatusBar statusBar;
-		private System.Windows.Forms.Panel panelGeneral;
-		private System.Windows.Forms.Splitter splitterLeftTop;
-		private System.Windows.Forms.Splitter splitterRightTop;
-		private System.Windows.Forms.DataGrid dataGridFields;
-		private System.Data.DataSet dataSet;
-		private System.Data.DataTable dataTableFields;
-		private System.Data.DataColumn dataColumnFieldName;
-		private System.Data.DataColumn dataColumnShortDescription;
-		private System.Windows.Forms.Splitter splitterStatusBar;
+		private Panel panelLeftTop;
+		private Label labelTables;
+		private ListBox listBoxTables;
+		private Panel panelRightTop;
+		private Label labelFields;
+		private StatusBar statusBar;
+		private Panel panelGeneral;
+		private Splitter splitterLeftTop;
+		private Splitter splitterRightTop;
+		private DataGrid dataGridFields;
+		private DataSet dataSet;
+		private DataTable dataTableFields;
+		private DataColumn dataColumnFieldName;
+		private DataColumn dataColumnShortDescription;
+		private Splitter splitterStatusBar;
 
 		public FormUI()
 		{
@@ -444,7 +444,7 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 		{
 			DialogResult dialogResult;
 
-			bool wasException = false;
+			bool wasException;
 
 			do
 			{
@@ -492,12 +492,7 @@ namespace DP.ProgressOpenedge4GL.Utils.Progress_DB_structure_explorer
 						ClearVisually();
 					}
 				}
-			}
-			while (! 
-					((dialogResult == DialogResult.OK) && 
-					File.Exists(openFileDialogDFFile.FileName) &&
-					(! wasException))
-				);
+			} while (! ((dialogResult == DialogResult.OK) && File.Exists(openFileDialogDFFile.FileName) && (! wasException)));
 		}
 
 		/// <summary>
